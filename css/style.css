@@ -4,6 +4,7 @@ html {
     font-size: 100%;
 }
 body {
+    background: beige;
     color: #24292e;
 }
 a {
@@ -34,6 +35,12 @@ dt {
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 65px;
+}
+.text-link {
+    color: #0000ee;
+}
+.text-link:hover {
+    opacity: 0.7;
 }
 
 /* -------------------------------
@@ -80,7 +87,7 @@ Mainvisual
 #mainvisual img {
     width: 100%;
     max-width: 1920px;
-    height: 420px;
+    height: calc(100vh - 270px);
     object-fit: cover;
 }
 
@@ -110,6 +117,15 @@ works
 #works li {
     width: 31%;
     margin-bottom: 23px;
+}
+#works li a {
+    display: block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    transition: box-shadow .2s ease-in, transform .2s ease-in;
+}
+#works li a:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, .5);
+    transform: scale(1.05);
 }
 
 /* ----------------------
@@ -199,6 +215,14 @@ footer
     #header li {
         font-size: 0.8rem;
         margin-left: 20px;
+    }
+    
+    /* ----------------------
+    Mainvisual
+    -------------------------- */
+    #mainvisual img {
+        object-position: 80%;
+        max-height: 530px;
     }
 
     /* ----------------------
