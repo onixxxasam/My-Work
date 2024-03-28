@@ -42,6 +42,26 @@ dt {
 .text-link:hover {
     opacity: 0.7;
 }
+.fadein {
+    opacity: 0;
+}
+
+/* -------------------------------
+Loading
+----------------------------------*/
+#loading {
+    position: fixed;
+    z-index: 9999;
+    background-color: beige;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 1;
+    visibility: visible;
+}
+#loading p {
+    font-size: 2rem;
+}
 
 /* -------------------------------
 ヘッダー

@@ -1,21 +1,27 @@
-// const mainvisuals = ['./img/mainvisual2.jpg', './img/mainvisual3.jpg'];
-// const mvArea = document.querySelector('#mainvisual');
-// mvArea.insertAdjacentHTML('beforeend', '<img src="./img/mainvisual1.jpg">');
-// console.log(mvArea)
-// let num = -1;
+/*----------------
+ローディング
+----------------*/
+const loading = document.querySelector('#loading');
 
-// const setMainvisual = () => {
-//     if (num===1) {
-//         num = 0;
-//     } else {
-//         num++;
-//     }
-//     document.querySelector('#mainvisual img').src = mainvisuals[num];
-// }
+// ロードが完了したら
+window.addEventListener('load', () => {
+    // ローディング画面を非表示にする
+    loading.animate(
+        {
+            opacity: [1, 0],
+            visibility: 'hidden'
+        },
+        {
+            duration: 500,
+            delay: 2000,
+            fill: 'forwards',
+        });
+});
 
 
-// setInterval(setMainvisual, 3000);
-
+/*----------------
+スライドショー
+----------------*/
 const mv = document.querySelector('#mainvisual img');
 
 let i = 1;
@@ -29,4 +35,30 @@ const setMv = () => {
     mv.src = `img/mainvisual${i}.jpg`;
 };
 
-setInterval(setMv, 2000);
+setInterval(setMv, 6000);
+
+/*----------------
+フェードイン
+----------------*/
+const showElement = (entries, obs) => {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+            entry.target.animate(
+                {
+                    opacity: [0, 1],
+                },
+                {
+                    duration: 2000,
+                    fill: 'forwards',
+                });
+            obs.unobserve(entry.target);
+        }
+    });
+};
+
+const elementObserver = new IntersectionObserver(showElement);
+
+const fadeElements = document.querySelectorAll('.fadein');
+fadeElements.forEach((fadeElement) => {
+    elementObserver.observe(fadeElement);
+});
